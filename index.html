@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garantía y Términos</title>
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #111827;
+      --card: rgba(255, 255, 255, 0.075);
+      --card2: rgba(255, 255, 255, 0.105);
+      --border: rgba(255, 255, 255, 0.14);
+      --text: #ffffff;
+      --muted: #cbd5e1;
+      --green: #22c55e;
+      --green2: #16a34a;
+      --red: #ef4444;
+      --yellow: #facc15;
+      --blue: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.20), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.18), transparent 28%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      padding: 18px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 22px 10px 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #bbf7d0;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 6vw, 45px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.30);
+      backdrop-filter: blur(14px);
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .card-note {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      color: #e5e7eb;
+      font-size: 13px;
+      margin-bottom: 7px;
+      font-weight: 700;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      outline: none;
+      border-radius: 15px;
+      padding: 14px 14px;
+      background: rgba(15, 23, 42, 0.72);
+      color: white;
+      font-size: 15px;
+      transition: 0.18s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: rgba(56, 189, 248, 0.75);
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    button, .fake-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 800;
+      color: white;
+      transition: 0.18s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 190px;
+    }
+
+    button:hover, .fake-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--green), var(--green2));
+      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #dff7ff;
+    }
+
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(239, 68, 68, 0.42);
+      color: #fecaca;
+    }
+
+    .btn-dark {
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #f8fafc;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .terms-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 15px;
+    }
+
+    .terms-title h2 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .terms-title p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14.5px;
+    }
+
+    .pill {
+      flex-shrink: 0;
+      color: #fef3c7;
+      background: rgba(250, 204, 21, 0.13);
+      border: 1px solid rgba(250, 204, 21, 0.32);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .important {
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.30);
+      border-radius: 18px;
+      padding: 15px;
+      color: #fef9c3;
+      line-height: 1.55;
+      font-size: 14px;
+      margin: 16px 0;
+    }
+
+    .section {
+      background: rgba(15, 23, 42, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 16px;
+      margin: 14px 0;
+    }
+
+    .section h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      color: #f8fafc;
+    }
+
+    .section p, .section li {
+      color: #dbeafe;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 7px;
+    }
+
+    .mini-actions {
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+      margin-top: 18px;
+      padding-top: 18px;
+    }
+
+    .footer-actions {
+      position: sticky;
+      bottom: 10px;
+      background: rgba(2, 6, 23, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      padding: 12px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      margin-top: 22px;
+    }
+
+    .small-text {
+      color: #94a3b8;
+      font-size: 12.5px;
+      line-height: 1.5;
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    .error {
+      display: none;
+      color: #fecaca;
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid rgba(239, 68, 68, 0.38);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .success-line {
+      color: #bbf7d0;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 620px) {
+      body {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 22px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .terms-header {
+        display: block;
+      }
+
+      .pill {
+        display: inline-flex;
+        margin-top: 12px;
+      }
+
+      button, .fake-btn {
+        width: 100%;
+        min-width: 100%;
+      }
+
+      .footer-actions {
+        bottom: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="badge">🛡️ Solicitud de garantía</div>
+      <h1>¿Deseas aplicar a garantía?</h1>
+      <p class="subtitle">
+        Ingresa tus datos y lee la política de garantía antes de continuar. La solicitud será enviada por WhatsApp para dejar constancia de tu aceptación o rechazo de los términos.
+      </p>
+    </section>
+
+    <section class="card" id="datos">
+      <h2 class="card-title">Deja tus datos</h2>
+      <p class="card-note">
+        Completa únicamente tu nombre y apellido para generar el mensaje formal de solicitud de garantía.
+      </p>
+
+      <div class="error" id="errorBox">Por favor escribe tu nombre y apellido antes de continuar.</div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" placeholder="Ejemplo: Brayan" autocomplete="given-name" />
+        </div>
+        <div class="field">
+          <label for="apellido">Apellido</label>
+          <input id="apellido" type="text" placeholder="Ejemplo: Raudales" autocomplete="family-name" />
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="mostrarPolitica()">Continuar leyendo la política de garantía</button>
+    </section>
+
+    <section class="card hidden" id="politicaCorta">
+      <div class="terms-header">
+        <div class="terms-title">
+          <h2>Garantía y términos</h2>
+          <p>
+            Esta política explica cuándo puede aplicar la garantía y cuándo debe pasar por revisión antes de aprobarse.
+          </p>
+        </div>
+        <span class="pill">Lectura obligatoria</span>
+      </div>
+
+      <div class="important">
+        La garantía no se aprueba de forma automática. Todo producto enviado a garantía debe ser revisado para confirmar que la falla corresponde a defecto de fábrica y no a daño físico, mal uso, caída, humedad, manipulación, rayones o cualquier situación similar.
+      </div>
+
+      <div class="section">
+        <h3>Resumen rápido</h3>
+        <ul>
+          <li>La garantía aplica únicamente por fallas internas o defectos de fábrica.</li>
+          <li>Todos los productos son revisados antes de ser entregados o despachados.</li>
+          <li>Al solicitar garantía, el producto será sometido nuevamente a revisión.</li>
+          <li>La recepción del producto para revisión no significa que la garantía ya fue aprobada.</li>
+          <li>No aplica por rayones, golpes, caídas, humedad, piezas quebradas, manipulación, desgaste normal o mal uso.</li>
+        </ul>
+      </div>
+
+      <div class="mini-actions">
+        <p class="card-note" style="margin-bottom:12px;">
+          Puedes aceptar con este resumen o continuar leyendo todos los términos completos.
+        </p>
+        <div class="btn-row">
+          <button class="btn-primary" onclick="enviarWhatsApp('acepto')">✅ Aceptar términos</button>
+          <button class="btn-secondary" onclick="mostrarPoliticaCompleta()">📖 Seguir leyendo</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card hidden" id="politicaCompleta">
+      <div class="terms-header">
+        <div class="terms-title">
+          <h2>Política completa de garantía</h2>
+          <p>
+            Lee cuidadosamente las condiciones antes de aceptar o rechazar los términos.
+          </p>
+        </div>
+        <span class="pill">Documento informativo</span>
+      </div>
+
+      <div class="section">
+        <h3>1. Alcance de la garantía</h3>
+        <p>
+          La garantía aplica únicamente cuando el producto presenta una falla real de funcionamiento atribuible a defecto de fábrica, siempre que el producto no presente señales de daño físico, mal uso, manipulación no autorizada o condiciones externas que hayan provocado la falla.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>2. Revisión previa de los productos</h3>
+        <p>
+          Todos los productos pasan por un proceso de revisión antes de ser entregados o despachados. Esta revisión puede incluir verificación visual, funcionamiento básico, estado físico, accesorios y condición general del producto, según corresponda al tipo de artículo.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>3. Revisión al solicitar garantía</h3>
+        <p>
+          Al solicitar garantía, el producto deberá ser sometido a una nueva revisión. La recepción del producto para revisión no representa aceptación inmediata de la garantía. La aprobación dependerá del resultado de la inspección y de que la falla sea compatible con defecto de fábrica.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>4. Casos donde la garantía no aplica</h3>
+        <ul>
+          <li>Rayones, golpes, abolladuras, quebraduras, fisuras, caídas o daños visibles.</li>
+          <li>Daño por humedad, líquidos, sudor, corrosión, sulfatación o exposición al agua.</li>
+          <li>Uso de cargadores, cables, adaptadores, baterías o accesorios no adecuados.</li>
+          <li>Manipulación, reparación, apertura, instalación o modificación realizada por terceros.</li>
+          <li>Daños por mal uso, sobrecarga eléctrica, instalación incorrecta o uso diferente al recomendado.</li>
+          <li>Desgaste normal por uso, suciedad, manchas, deterioro estético o daño cosmético.</li>
+          <li>Productos con sellos rotos, piezas faltantes, accesorios incompletos o empaque alterado cuando aplique.</li>
+          <li>Problemas causados por aplicaciones, configuraciones, software no autorizado, virus, formateos o cambios realizados por el cliente.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>5. Resultado de la revisión</h3>
+        <p>
+          Después de la revisión, se informará al cliente si la garantía procede o no procede. Si procede, se podrá realizar reparación, cambio, solución técnica o gestión correspondiente, según el tipo de producto, disponibilidad y condiciones aplicables.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>6. Responsabilidad del cliente</h3>
+        <p>
+          El cliente debe entregar el producto en las mejores condiciones posibles, con sus accesorios cuando correspondan, y explicar de forma clara la falla reportada. El cliente acepta que cualquier daño físico, alteración o señal de mal uso puede invalidar la aplicación de garantía.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>7. Derechos del consumidor</h3>
+        <p>
+          Esta política busca ordenar el proceso de revisión y garantía de forma clara y transparente. Ninguna condición aquí indicada pretende eliminar derechos que correspondan al consumidor conforme a la legislación aplicable.
+        </p>
+      </div>
+
+      <div class="important">
+        Al aceptar, confirmas que leíste la política de garantía y comprendes que la solicitud será revisada antes de ser aprobada. La garantía no cubre daños físicos, rayones, caídas, humedad, manipulación, mal uso ni situaciones similares.
+      </div>
+
+      <div class="footer-actions">
+        <div class="btn-row" style="margin-top:0;">
+          <button class="btn-primary" onclick="enviarWhatsApp('acepto')">✅ Aceptar términos</button>
+          <button class="btn-danger" onclick="enviarWhatsApp('rechazo')">❌ Rechazar términos</button>
+        </div>
+        <p class="small-text">
+          Ambos botones abrirán WhatsApp con un mensaje automático dirigido al número configurado.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const WHATSAPP_NUMERO = "50496310102";
+
+    function limpiarTexto(valor) {
+      return (valor || "").trim().replace(/\s+/g, " ");
+    }
+
+    function obtenerDatos() {
+      return {
+        nombre: limpiarTexto(document.getElementById("nombre").value),
+        apellido: limpiarTexto(document.getElementById("apellido").value)
+      };
+    };
+    }
+
+    function validarDatos() {
+      const datos = obtenerDatos();
+      const errorBox = document.getElementById("errorBox");
+
+      if (!datos.nombre || !datos.apellido) {
+        errorBox.style.display = "block";
+        document.getElementById("datos").scrollIntoView({ behavior: "smooth", block: "start" });
+        return false;
+      }
+
+      errorBox.style.display = "none";
+      return true;
+    }
+
+    function mostrarPolitica() {
+      if (!validarDatos()) return;
+
+      const politicaCorta = document.getElementById("politicaCorta");
+      politicaCorta.classList.remove("hidden");
+      politicaCorta.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function mostrarPoliticaCompleta() {
+      if (!validarDatos()) return;
+
+      const completa = document.getElementById("politicaCompleta");
+      completa.classList.remove("hidden");
+      completa.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function enviarWhatsApp(tipo) {
+      if (!validarDatos()) return;
+
+      const datos = obtenerDatos();
+      const nombreCompleto = `${datos.nombre} ${datos.apellido}`.trim();
+
+      let mensaje = "";
+
+      if (tipo === "acepto") {
+        mensaje = `Hola, mi nombre es ${nombreCompleto}.
+
+He leído y acepto los términos y condiciones para aplicar a garantía. Solicito la revisión del producto y comprendo que la garantía no se aprueba de forma automática, sino que el producto debe ser evaluado para confirmar si la falla corresponde a defecto de fábrica.\n\nTambién comprendo que la garantía no aplica por rayones, golpes, caídas, humedad, daños físicos, manipulación, mal uso, accesorios inadecuados, desgaste normal o situaciones similares.`;
+      } else {
+        mensaje = `Hola, mi nombre es ${nombreCompleto}.
+
+He leído la política de garantía y por este medio indico que no acepto los términos y condiciones para aplicar a garantía en este momento.`;
+      }
+
+      const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
