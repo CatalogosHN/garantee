@@ -182,6 +182,35 @@
       border: 1px solid #fecaca;
     }
 
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .step {
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 16px;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .step strong {
+      display: block;
+      color: #1d4ed8;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .step span {
+      display: block;
+      color: #475569;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
     .section-title {
       display: flex;
       align-items: flex-start;
@@ -262,33 +291,74 @@
       margin-top: 12px;
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 18px;
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.58);
+      z-index: 9999;
+      padding: 16px;
+      align-items: center;
+      justify-content: center;
     }
 
-    .step {
+    .modal-box {
+      width: 100%;
+      max-width: 520px;
       background: #ffffff;
-      border: 1px solid #dbeafe;
+      border-radius: 24px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.28);
+      padding: 22px;
+      animation: pop 0.18s ease-out;
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .modal-title {
+      font-size: 23px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .modal-text {
+      color: #334155;
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .modal-list {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
       border-radius: 16px;
-      padding: 12px;
-      text-align: left;
+      padding: 14px 14px 14px 32px;
+      margin-bottom: 14px;
     }
 
-    .step strong {
-      display: block;
-      color: #1d4ed8;
-      font-size: 13px;
-      margin-bottom: 5px;
+    .modal-list li {
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.55;
     }
 
-    .step span {
-      display: block;
-      color: #475569;
-      font-size: 13px;
-      line-height: 1.35;
+    .close-modal {
+      width: 100%;
+      margin-top: 10px;
+      background: transparent;
+      color: #64748b;
+      border: 1px solid #e5e7eb;
+      box-shadow: none;
+      min-width: 100%;
     }
 
     @media (max-width: 650px) {
@@ -297,7 +367,8 @@
       }
 
       .top,
-      .card {
+      .card,
+      .modal-box {
         border-radius: 18px;
         padding: 18px;
       }
@@ -343,12 +414,12 @@
           <span>Nombre y apellido del cliente.</span>
         </div>
         <div class="step">
-          <strong>2. Lectura</strong>
-          <span>Revisión clara del reglamento.</span>
+          <strong>2. Confirmación</strong>
+          <span>Ventana con resumen claro.</span>
         </div>
         <div class="step">
           <strong>3. WhatsApp</strong>
-          <span>Confirmación enviada por mensaje.</span>
+          <span>Mensaje formal automático.</span>
         </div>
       </div>
     </section>
@@ -370,39 +441,7 @@
         </div>
       </div>
 
-      <button class="btn-primary" type="button" onclick="mostrarReglamento()">Continuar leyendo reglamento de garantía</button>
-    </section>
-
-    <section class="card hidden" id="reglamentoCorto">
-      <div class="section-title">
-        <div>
-          <h2>Reglamento interno de garantía</h2>
-          <p class="note">Este reglamento explica de forma sencilla cómo se revisan las solicitudes de garantía en ventas realizadas por Facebook, WhatsApp u otros medios similares.</p>
-        </div>
-        <span class="tag">Lectura importante</span>
-      </div>
-
-      <div class="warning-box">
-        La garantía no es aprobación automática. Todo producto debe ser revisado para confirmar si la falla corresponde a defecto de fábrica y no a daño físico, golpe, caída, humedad, rayones, manipulación, mal uso o situaciones similares.
-      </div>
-
-      <div class="info-box">
-        <h3>Resumen principal</h3>
-        <ul>
-          <li>La garantía aplica únicamente por fallas reales atribuibles a defecto de fábrica.</li>
-          <li>Todos los productos pasan por revisión antes de entregarse o despacharse.</li>
-          <li>Si se solicita garantía, el producto será revisado nuevamente.</li>
-          <li>Recibir el producto para revisión no significa que la garantía ya fue aprobada.</li>
-          <li>No aplica por rayones, golpes, caídas, humedad, piezas quebradas, manipulación, desgaste normal, mal uso o daño estético.</li>
-        </ul>
-      </div>
-
-      <p class="note">Puedes aceptar con este resumen o seguir leyendo el reglamento completo.</p>
-
-      <div class="btn-row">
-        <button class="btn-primary" type="button" onclick="enviarWhatsApp('acepto')">Aceptar términos</button>
-        <button class="btn-secondary" type="button" onclick="mostrarCompleto()">Seguir leyendo</button>
-      </div>
+      <button class="btn-primary" type="button" onclick="abrirResumen()">Continuar leyendo reglamento de garantía</button>
     </section>
 
     <section class="card hidden" id="reglamentoCompleto">
@@ -411,7 +450,7 @@
           <h2>Reglamento completo de garantía</h2>
           <p class="note">Lee las condiciones completas antes de aceptar o rechazar los términos.</p>
         </div>
-        <span class="tag">Reglamento</span>
+        <span class="tag">Reglamento interno</span>
       </div>
 
       <div class="info-box">
@@ -470,6 +509,30 @@
     </section>
   </main>
 
+  <div class="modal-overlay" id="modalResumen">
+    <div class="modal-box">
+      <h2 class="modal-title">Resumen del reglamento de garantía</h2>
+      <p class="modal-text">
+        Antes de aplicar a garantía, confirma que entiendes estas condiciones principales:
+      </p>
+
+      <ul class="modal-list">
+        <li>La garantía no se aprueba de forma automática.</li>
+        <li>El producto debe pasar por revisión.</li>
+        <li>La garantía aplica únicamente por defecto de fábrica.</li>
+        <li>No aplica por rayones, golpes, caídas, humedad, manipulación, mal uso o daño físico.</li>
+        <li>Todos los productos son revisados antes de entregarse o despacharse.</li>
+      </ul>
+
+      <div class="btn-row">
+        <button class="btn-primary" type="button" onclick="enviarWhatsApp('acepto')">Aceptar términos</button>
+        <button class="btn-secondary" type="button" onclick="seguirLeyendo()">Leer Politica Completa</button>
+      </div>
+
+      <button class="close-modal" type="button" onclick="cerrarResumen()">Cerrar</button>
+    </div>
+  </div>
+
   <script>
     const WHATSAPP_NUMERO = "50496310102";
 
@@ -498,26 +561,21 @@
       return true;
     }
 
-    function mostrarReglamento() {
+    function abrirResumen() {
       if (!validarDatos()) return;
-
-      const bloque = document.getElementById("reglamentoCorto");
-      bloque.classList.remove("hidden");
-      bloque.style.display = "block";
-
-      setTimeout(function() {
-        bloque.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 60);
+      document.getElementById("modalResumen").style.display = "flex";
     }
 
-    function mostrarCompleto() {
+    function cerrarResumen() {
+      document.getElementById("modalResumen").style.display = "none";
+    }
+
+    function seguirLeyendo() {
       if (!validarDatos()) return;
 
-      const corto = document.getElementById("reglamentoCorto");
-      const completo = document.getElementById("reglamentoCompleto");
+      cerrarResumen();
 
-      corto.classList.remove("hidden");
-      corto.style.display = "block";
+      const completo = document.getElementById("reglamentoCompleto");
       completo.classList.remove("hidden");
       completo.style.display = "block";
 
